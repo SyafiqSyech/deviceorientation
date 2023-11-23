@@ -10,6 +10,10 @@ function handleOrientationEvent(event) {
 
   window.console && console.info('Raw position: x, y: ', x, y);
 
+  document.getElementById('alpha').innerHTML = event.alpha
+  document.getElementById('beta').innerHTML = event.beta
+  document.getElementById('gamma').innerHTML = event.gamma
+  
   if (!initialX && !initialY) {
 
     initialX = x;
