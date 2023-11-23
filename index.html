@@ -7,21 +7,69 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Device Orientation - Demo - Update 3</h1>
-    <p>HTML 5 device orientation demo, currently only supported by Webkit (Google Chrome 9+) and Mozilla (Firefox 3.6+) based browsers.</p>
+    <h1>Device Orientation Events Demo</h1>
+
+<p>Please note: <a href="http://caniuse.com/#feat=deviceorientation">Your browser needs to support these events</a> <strong>AND</strong> your device needs to have the appropriate hardware (if you're not seeing any values, try viewing this page on a mobile device).</p>
+<p>Codepen also depends a lot on iframes, which Safari doesn't like, so if the example isn't working try viewing it in <a href="https://s.codepen.io/Rumyra/debug/naLuc">debug mode</a>.</p>
+
+<div>
+  <h2>Device Orientation</h2>
+  <dl id="orientation">
+    <dt>Alpha:</dt>
+    <dd>N/A</dd>
     
-    <p><a href="http://www.juurlink.org/2011/02/html-5-accelerometer/" target="_blank">HTML 5 Accelerometer</a></p>
-    <p style="display: inline-block;" id="warning">Warning: Cannot receive device orientation events, this browser is not supported.</p>
-    <p>alpha</p>
-    <p id="alpha"></p>
-    <p>beta</p>
-    <p id="beta"></p>
-    <p>gamma</p>
-    <p id="gamma"></p>
-    <div id="canvas">
-        <div id="middle"></div>
-        <div id="ball"></div>
-    </div>
+    <dt>Beta:</dt>
+    <dd>N/A</dd>
+    
+    <dt>Gamma:</dt>
+    <dd>N/A</dd>
+  </dl>
+</div>
+
+<div>
+  <h2>Device Motion</h2>
+  <h4>Acceleration</h4>
+  <dl id="acceleration">      
+      <dt>X acceleration:</dt>
+      <dd>N/A</dd>
+      
+      <dt>Y acceleration:</dt>
+      <dd>N/A</dd>
+      
+      <dt>Z acceleration:</dt>
+      <dd>N/A</dd>
+    </dl>
+    
+    <h4>Acceleration Including Gravity</h4>
+    <dl id="accincgrav">      
+      <dt>X acceleration inc. gravity:</dt>
+      <dd>N/A</dd>
+      
+      <dt>Y acceleration inc. gravity:</dt>
+      <dd>N/A</dd>
+      
+      <dt>Z acceleration inc. gravity:</dt>
+      <dd>N/A</dd>
+    </dl>
+    
+    <h4>Rotation</h4>
+    <dl id="rotation">
+      <dt>X rotation rate:</dt>
+      <dd>N/A</dd>
+      
+      <dt>Y rotation rate:</dt>
+      <dd>N/A</dd>
+      
+      <dt>Z rotation rate:</dt>
+      <dd>N/A</dd>
+    </dl>
+    
+    <h4>Interval</h4>
+    <dl id="interval">
+      <dt>Interval:</dt>
+      <dd>N/A</dd>
+    </dl>
+ </div>
     <script src="script.js"></script>
 </body>
 </html>

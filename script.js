@@ -1,44 +1,54 @@
-var initialX = null;
-var initialY = null;
-
-var ball = document.getElementById('ball');
-
-function handleOrientationEvent(event) {
-
-  var x = event.beta ? event.beta : event.y * 90;
-  var y = event.alpha ? event.alpha : event.x * 90;
-
-  window.console && console.info('Raw position: x, y: ', x, y);
-
-  document.getElementById('alpha').innerHTML = event.alpha
-  document.getElementById('beta').innerHTML = event.beta
-  document.getElementById('gamma').innerHTML = event.gamma
-  
-  if (!initialX && !initialY) {
-
-    initialX = x;
-    initialY = y;
-
-  } else {
-
-    var positionX = initialX - x;
-    var positionY = initialY - y;
-
-    ball.style.top = (90 + positionX * 5) + 'px';
-    ball.style.left = (90 + positionY * 5) + 'px';
-  }
+// get html elements to append with event values
+var orientationEl = document.getElementById('orientation'),
+  accelerationEl = document.getElementById('acceleration'),
+  accIncGravEl = document.getElementById('accincgrav'),
+  rotationEl = document.getElementById('rotation'),
+  intervalEl = document.getElementById('interval');
+ 
+if (window.DeviceOrientationEvent) {
+  window.addEventListener('deviceorientation', deviceOrientationHandler, false)
 }
 
-function isEventFired() {
-  if (!initialX && !initialY) {
-    var warningElement = document.getElementById('warning');
-    warningElement.innerText = 'Warning: Cannot receive device orientation events, this browser is not supported.';
-    warningElement.style.display = 'inline-block';
-  }
+function deviceOrientationHandler(evt) {
+  var orientationData = evt;
+  // compass direction
+  orientationEl.children[1].innerHTML = evt.alpha;
+
+  // vertical tilt
+  orientationEl.children[3].innerHTML = evt.beta;
+
+  // horizontal tilt
+  orientationEl.children[5].innerHTML = evt.gamma;
 }
 
-// Webkit en Mozilla variant beide registreren.
-window.addEventListener("MozOrientation", handleOrientationEvent, true);
-window.addEventListener("deviceorientation", handleOrientationEvent, true);
+if (window.DeviceMotionEvent) {
+  window.addEventListener('devicemotion', deviceMotionHandler, false);
+}
 
-setTimeout(isEventFired, 5000);
+function deviceMotionHandler(evt) {
+  var motionData = evt;
+  // acceleration
+  var evAcceleration = evt.acceleration;
+
+  accelerationEl.children[1].innerHTML = evAcceleration.x;
+  accelerationEl.children[3].innerHTML = evAcceleration.y;
+  accelerationEl.children[5].innerHTML = evAcceleration.z;
+
+  // acceleration including gravity
+  var accIncGravity = evt.accelerationIncludingGravity;
+
+  accIncGravEl.children[1].innerHTML = accIncGravity.x;
+  accIncGravEl.children[3].innerHTML = accIncGravity.y;
+  accIncGravEl.children[5].innerHTML = accIncGravity.z;
+
+  // rotation rate
+  var rotationRate = evt.rotationRate;
+
+  rotationEl.children[1].innerHTML = rotationRate.alpha;
+  rotationEl.children[3].innerHTML = rotationRate.beta;
+  rotationEl.children[5].innerHTML = rotationRate.gamma;
+
+  // interval
+  var interval = evt.interval;
+  intervalEl.children[1].innerHTML = interval;
+}
