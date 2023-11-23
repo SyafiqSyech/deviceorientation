@@ -12,7 +12,7 @@ if (window.DeviceOrientationEvent) {
 function deviceOrientationHandler(evt) {
   var orientationData = evt;
   // compass direction
-  orientationEl.children[1].innerHTML = evt.alpha % 60;
+  orientationEl.children[1].innerHTML = evt.alpha / 60;
 
   // vertical tilt
   orientationEl.children[3].innerHTML = evt.beta;
