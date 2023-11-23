@@ -6,7 +6,7 @@ var ball = document.getElementById('ball');
 function handleOrientationEvent(event) {
 
   var x = event.beta ? event.beta : event.y * 90;
-  var y = event.gamma ? event.gamma : event.x * 90;
+  var y = event.alpha ? event.alpha : event.x * 90;
 
   window.console && console.info('Raw position: x, y: ', x, y);
 
